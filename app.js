@@ -43,24 +43,23 @@ function mainMenu(person, people) {
       console.log(person);
       break;
 
-      case "family":
-
-      people.filter( item => {
-        iterateObject(item);
-      })
-        function iterateObject(obj) {
-          for(parents in obj) {
-           if(typeof(obj[prop]) == "object"){
-             iterateObject(obj[prop]);
-           } else {
-             if(prop == "currentSpouse" || prop == "parents") {
-              alert(prop);
-              return prop;
-             }
-           }
-         }
-       }
-      alert("This is a parent: " + person.parents[0] + person.parents[1]);
+    case "family":
+      // people.filter( item => {
+      //   iterateObject(item);
+      // })
+      //   function iterateObject(obj) {
+      //     for(parents in obj) {
+      //      if(typeof(obj[prop]) == "object"){
+      //        iterateObject(obj[prop]);
+      //      } else {
+      //        if(prop == "currentSpouse" || prop == "parents") {
+      //         alert(prop);
+      //         return prop;
+      //        }
+      //      }
+      //    }
+      //  }
+      // alert("This is a parent: " + person.parents[0] + person.parents[1]);
 
       break;
 
@@ -134,7 +133,6 @@ let allResults = [];
 //   for ()
 // }
 
-
 function searchTraits(people) {
   let findTraits = promptFor(
     "Search by 'Gender', 'Height', 'Weight', 'dob', 'eyeColor', 'Occupation'.",
@@ -146,7 +144,7 @@ function searchTraits(people) {
       results = searchByHeight(people);
       displayPeople(results);
       allResults = results;
-      console.log ("this is allResults" + allResults)
+      console.log("this is allResults " + allResults);
       // searchedPerson(allResults);
       break;
 
@@ -154,7 +152,7 @@ function searchTraits(people) {
       results = searchByWeight(people);
       displayPeople(results);
       allResults = results;
-      console.log ("this is allResults" + allResults)
+      console.log("this is allResults " + allResults);
       // findTraits();
       break;
 
@@ -162,7 +160,7 @@ function searchTraits(people) {
       results = searchByGender(people);
       displayPeople(results);
       allResults = results;
-      console.log ("this is allResults" + allResults)
+      console.log("this is allResults" + allResults);
       // findTraits();
       break;
 
@@ -170,7 +168,7 @@ function searchTraits(people) {
       results = searchByDob(people);
       displayPeople(results);
       allResults = results;
-      console.log ("this is allResults" + allResults)
+      console.log("this is allResults" + allResults);
       // findTraits();
       break;
 
@@ -178,7 +176,7 @@ function searchTraits(people) {
       results = searchByOccupation(people);
       displayPeople(results);
       allResults = results;
-      console.log ("this is allResults" + allResults)
+      console.log("this is allResults" + allResults);
       // findTraits();
       break;
 
@@ -186,33 +184,39 @@ function searchTraits(people) {
       results = searchByEyeColor(people);
       displayPeople(results);
       allResults = results;
-      console.log ("this is allResults" + allResults)
-      searchTraits(traitResults); // added this trying to get search results to list more than one thing.
-      
+      console.log("this is allResults" + allResults);
+      searchTraits(allResults); // added this trying to get search results to list more than one thing.
+
     case "Exit":
       return mainMenu(person, people);
     default:
       alert("Your input is invalid.");
       return mainMenu(person, people);
   }
-  if (allResults.length = 0) {
-    alert("Here is your result " + allResults); //replace searchTraits(results) with allResults
+  if ((allResults.length = 1)) {
+    alert(
+      "Here is your result " +
+        allResults
+          .map(function (person) {
+            return person.firstName + " " + person.lastName;
+          })
+          .join("\n")
+    );
   } else {
     return searchTraits(allResults);
   }
 
   function searchByHeight(people) {
     let input = promptFor("What is the person's height in inches?", chars);
-   
+
     let foundHeight = people.filter(function (person) {
       if (person.height == input) {
-        return true;
+        return person;
       } else {
         return false;
       }
     });
-    console.log(foundHeight);
-    return foundHeight;
+    return person;
   }
   function searchByWeight(people) {
     let input = promptFor("What is the person's weight in pounds?", chars);
