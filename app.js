@@ -1,5 +1,5 @@
 "use strict";
-let searchedPerson = [];
+
 function app(people) {
   let searchType = promptFor(
     "Do you know the name of the person you are looking for? Enter 'yes' or 'no'",
@@ -128,13 +128,11 @@ function chars(input) {
   return true;
 }
 
-let traitResults = [];
-let heightResults = [];
-let weightResults = [];
-let genderResults = [];
-let dobResults = [];
-let occupationResults = [];
-let eyeColorResults = [];
+let allResults = [];
+
+// function searchedPerson(allResults) {
+//   for ()
+// }
 
 
 function searchTraits(people) {
@@ -147,42 +145,48 @@ function searchTraits(people) {
     case "Height":
       results = searchByHeight(people);
       displayPeople(results);
-      heightResults += results;
-      findTraits();
+      allResults = results;
+      console.log ("this is allResults" + allResults)
+      // searchedPerson(allResults);
       break;
 
     case "Weight":
       results = searchByWeight(people);
       displayPeople(results);
-      weightResults += results;
-      findTraits();
+      allResults = results;
+      console.log ("this is allResults" + allResults)
+      // findTraits();
       break;
 
     case "Gender":
       results = searchByGender(people);
       displayPeople(results);
-      genderResults += results;
-      findTraits();
+      allResults = results;
+      console.log ("this is allResults" + allResults)
+      // findTraits();
       break;
 
     case "dob":
       results = searchByDob(people);
       displayPeople(results);
-      dobResults += results;
-      findTraits();
+      allResults = results;
+      console.log ("this is allResults" + allResults)
+      // findTraits();
       break;
 
     case "Occupation":
       results = searchByOccupation(people);
       displayPeople(results);
-      foundOccupation += results;
-      findTraits();
+      allResults = results;
+      console.log ("this is allResults" + allResults)
+      // findTraits();
       break;
 
     case "eyeColor":
       results = searchByEyeColor(people);
       displayPeople(results);
-      eyeColorResults += traitResults;
+      allResults = results;
+      console.log ("this is allResults" + allResults)
       searchTraits(traitResults); // added this trying to get search results to list more than one thing.
       
     case "Exit":
@@ -191,10 +195,10 @@ function searchTraits(people) {
       alert("Your input is invalid.");
       return mainMenu(person, people);
   }
-  if (searchTraits.results.length == 1) {
-    alert("Here is your result " + searchTraits(results));
+  if (allResults.length = 0) {
+    alert("Here is your result " + allResults); //replace searchTraits(results) with allResults
   } else {
-    return searchTraits(results);
+    return searchTraits(allResults);
   }
 
   function searchByHeight(people) {
