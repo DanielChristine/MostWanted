@@ -143,7 +143,9 @@ function searchTraits(people) {
     case "Height":
       results = searchByHeight(people);
       displayPeople(results);
-      allResults = results;
+      allResults = results[0].firstName + ' ' + results[0].lastName + " , ";
+      allResults += results[1].firstName + ' ' + results[1].lastName + " , ";
+      allResults += results[2].firstName + ' ' + results[2].lastName;
       console.log("this is allResults " + allResults);
       // searchedPerson(allResults);
       break;
@@ -209,7 +211,7 @@ function searchTraits(people) {
   function searchByHeight(people) {
     let input = promptFor("What is the person's height in inches?", chars);
 
-    let foundHeight = people.filter(function (person) {
+    let person = people.filter(function (person) {
       if (person.height == input) {
         return person;
       } else {
